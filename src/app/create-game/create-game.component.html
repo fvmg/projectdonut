@@ -1,0 +1,50 @@
+<div class="game-form">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="title">Create Game</h2>
+      <form [formGroup]="game">
+        <div class="row row-space">
+          <div class="field col-sm-6">
+            <input type="text" formControlName="name" id="name" name="name">
+            <label for="name">Name</label>
+          </div>
+          <div class="field col-sm-6">
+            <select formControlName="genre" id="genre">
+              <option *ngFor="let genre of genres" [value]="genre.name">{{genre.name}}</option>
+            </select>
+            <label for="genre">Genre</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-6">
+            <input type="date" formControlName="releaseDate" id="releaseDate" name="releaseDate">
+            <label for="releaseDate">Release Date</label>
+          </div>
+          <div class="field col-sm-6">
+            <input type="text" formControlName="version" id="version" name="version">
+            <label for="version">Version</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="text" formControlName="downloadLink" id="downloadLink" name="downloadLink">
+            <label for="downloadLink">Download Link</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="file" id="coverImage" (change)="onFileChanged($event)">
+            <label for="coverImage">Cover Image</label>
+          </div>
+        </div>
+
+        <button class="default-button" (click)="save()">Save Game</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

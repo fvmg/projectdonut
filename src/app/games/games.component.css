@@ -1,0 +1,21 @@
+.scroll-list {
+  background: white;
+  position: absolute;
+  top: 23%;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.default-button {
+  margin-top: 20px;
+  font-size: 120%;
+}
+
+.games-list {
+  padding: 20px;
+  border: 20px black;
+}

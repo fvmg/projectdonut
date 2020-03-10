@@ -1,0 +1,18 @@
+<div class="scroll-list">
+  <h1 style="text-align:center">
+    GAMES
+  </h1>
+  <a class="center" href="/createGame"><button class="default-button">Create Game</button></a>
+  <div *ngFor="let genre of genres; let i = index">
+    <div>{{genre.genre}}</div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template *ngFor="let game of getGames(i)" carouselSlide>
+        <img [src]="game.coverImage" height="300px">
+        <div class="text-center">{{game.name}}</div>
+      </ng-template>
+    </owl-carousel-o>
+    <br>
+  </div>
+
+
+</div>

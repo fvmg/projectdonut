@@ -6,17 +6,13 @@ import {environment} from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class GameService {
+export class GenreService {
 
-  private baseUrl = environment.apiEndpoint + '/games';
+  private baseUrl = environment.apiEndpoint + '/genres';
 
   constructor(private http: HttpClient) { }
 
-  getGameList() {
-    return this.http.get(this.baseUrl + '/getAll');
-  }
-
-  saveGame(formData: FormData): Observable<any> {
-    return this.http.post(this.baseUrl + '/createGame', formData);
+  getAllBase() {
+    return this.http.get(this.baseUrl + '/getAllBase');
   }
 }
