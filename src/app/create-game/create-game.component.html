@@ -17,6 +17,13 @@
         </div>
 
         <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="text" formControlName="briefDescription" id="briefDescription" name="briefDescription">
+            <label for="briefDescription">Brief Description</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
           <div class="field col-sm-6">
             <input type="date" formControlName="releaseDate" id="releaseDate" name="releaseDate">
             <label for="releaseDate">Release Date</label>
@@ -38,6 +45,13 @@
           <div class="field col-sm-12">
             <input type="file" id="coverImage" (change)="onFileChanged($event)">
             <label for="coverImage">Cover Image</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <textarea rows="6" type="text" formControlName="fullDescription" id="fullDescription" name="fullDescription"></textarea>
+            <label for="fullDescription">Full Description</label>
           </div>
         </div>
 

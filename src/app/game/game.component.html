@@ -1,1 +1,47 @@
-<p>game works!</p>
+<div class="card game-body">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <h1>{{game.name}}</h1>
+        <button>Download</button>
+      </div>
+      <span>Version {{game.version}}</span>
+    </div>
+    <div class="col-md-4">
+      <h1>Rating</h1>
+      <img *ngFor="let rate of ratingToArray()" alt="ratingDonut" src="../../assets/images/fullRating.png" height="60px" width="90px">
+      <img *ngIf="halfRating" alt="ratingDonut" src="../../assets/images/halfRating.png" height="60px" width="90px">
+      <button>Rate</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-6">
+      <img alt="gameImg" [src]="game.coverImage" height="400px" width="800px">
+    </div>
+    <div class="col-lg-6">
+      <div class="game-description">{{game.fullDescription}}</div>
+      <div class="game-description">Release Date {{game.releaseDate}}</div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="game-counts">0</div>
+      <div class="game-texts">FOLLOWERS</div>
+    </div>
+    <div class="col-md-3">
+      <div class="game-counts">0</div>
+      <div class="game-texts">POSTS</div>
+    </div>
+    <div class="col-md-3">
+      <div class="game-counts">0</div>
+      <div class="game-texts">IMAGES</div>
+    </div>
+    <div class="col-md-3">
+      <div class="game-counts">0</div>
+      <div class="game-texts">VIDEOS</div>
+    </div>
+  </div>
+
+</div>

@@ -16,6 +16,10 @@ export class GameService {
     return this.http.get(this.baseUrl + '/getAll');
   }
 
+  getGame(id: number): Observable<any> {
+    return this.http.get(this.baseUrl + '/get?id=' + id);
+  }
+
   saveGame(formData: FormData): Observable<any> {
     return this.http.post(this.baseUrl + '/createGame', formData);
   }

@@ -14,6 +14,9 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import { CreateGameComponent } from './create-game/create-game.component';
 import { GameComponent } from './game/game.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { RateGameComponent } from './rate-game/rate-game.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     CreateGameComponent,
-    GameComponent
+    GameComponent,
+    LoginComponent,
+    RegisterComponent,
+    RateGameComponent
   ],
   imports: [
     BrowserModule,

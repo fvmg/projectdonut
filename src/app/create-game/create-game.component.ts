@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {GameService} from '../services/game.service';
 import {GenreService} from '../services/genre.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-game',
@@ -16,12 +17,14 @@ export class CreateGameComponent implements OnInit {
     genre: new FormControl(''),
     releaseDate: new FormControl(''),
     version: new FormControl(''),
-    downloadLink: new FormControl('')
+    downloadLink: new FormControl(''),
+    briefDescription: new FormControl(''),
+    fullDescription: new FormControl('')
   });
 
   genres = [];
 
-  constructor(private gameService: GameService, private genreService: GenreService) { }
+  constructor(private gameService: GameService, private genreService: GenreService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllBaseGenres();
@@ -44,7 +47,7 @@ export class CreateGameComponent implements OnInit {
     formData.append('coverImage', this.coverImage);
 
     this.gameService.saveGame(formData).subscribe((response) => {
-      console.log(response);
+      this.router.navigate(['game', response.id]);
     });
   }
 

@@ -1,0 +1,27 @@
+<div class="rate-form">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="title">Rate Game</h2>
+      <form [formGroup]="rate">
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="text" formControlName="name" id="name" name="name">
+            <label for="name">Name</label>
+          </div>
+        </div>
+
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <textarea rows="6" type="text" formControlName="comments" id="comments" name="comments"></textarea>
+            <label for="comments">Comments</label>
+          </div>
+        </div>
+
+        <button class="default-button" (click)="rate()">Rate Game</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

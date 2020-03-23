@@ -1,0 +1,40 @@
+.game-body {
+  background: white;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  box-shadow: 10px 10px 10px;
+  margin-top: 60px;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 200%;
+}
+
+img {
+  padding-right: 15px;
+}
+
+button {
+  margin-left: 20px;
+}
+
+.game-description {
+  font-size: 130%;
+}
+
+.game-counts {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 200%;
+}
+
+.game-texts {
+  width: 100%;
+  text-align: center;
+  font-size: 200%;
+}

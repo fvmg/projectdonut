@@ -1,0 +1,59 @@
+<div class="register-form">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="title">Register</h2>
+      <form [formGroup]="registerForm">
+        <div class="row row-space">
+          <div class="field col-sm-6">
+            <input type="text" formControlName="firstName" id="firstName" name="firstName">
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="field col-sm-6">
+            <input type="text" formControlName="lastName" id="lastName" name="lastName">
+            <label for="lastName">Last Name</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="text" formControlName="email" id="email" name="email">
+            <label for="email">Email</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="text" formControlName="login" id="login" name="login">
+            <label for="login">Login</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="password" formControlName="password" id="password" name="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="password" formControlName="passwordRepeat" id="passwordRepeat" name="passwordRepeat">
+            <label for="passwordRepeat">Repeat Password</label>
+          </div>
+        </div>
+
+        <div *ngIf="hasError" class="row row-space">
+          <div class="field col-sm-12">
+            <span class="alert-danger">{{errorMessage}}</span>
+          </div>
+        </div>
+
+        <button class="default-button" (click)="register()">Register</button>
+
+      </form>
+      <a href="login">Have an account? Sign In</a>
+    </div>
+  </div>
+</div>
+
+

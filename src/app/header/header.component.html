@@ -6,5 +6,6 @@
   <a href="/games" mat-button class="mat-button-bg">Games</a>
   <a mat-button class="mat-button-bg">Jobs</a>
   <a mat-button class="mat-button-bg">News</a>
-  <a mat-raised-button color="primary" class="mat-button-bg">Sign Up</a>
+  <a *ngIf="!logged" href="/login" mat-raised-button color="primary" class="mat-button-bg">Sign In</a>
+  <a *ngIf="logged" mat-raised-button color="primary" class="mat-button-bg"><i class="fa fa-user" aria-hidden="true"></i></a>
 </mat-toolbar>

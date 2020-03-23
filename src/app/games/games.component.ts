@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Game} from '../models/game';
 import {GameService} from '../services/game.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-games',
@@ -38,10 +39,14 @@ export class GamesComponent implements OnInit {
 
   genres = [];
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
     this.reloadData();
+  }
+
+  gameDetails(id: number){
+    this.router.navigate(['game', id]);
   }
 
   reloadData() {

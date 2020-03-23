@@ -6,8 +6,8 @@
   <div *ngFor="let genre of genres; let i = index">
     <div>{{genre.genre}}</div>
     <owl-carousel-o [options]="customOptions">
-      <ng-template *ngFor="let game of getGames(i)" carouselSlide>
-        <img [src]="game.coverImage" height="300px">
+      <ng-template  *ngFor="let game of getGames(i)" carouselSlide>
+        <img (click)="gameDetails(game.id)" [src]="game.coverImage" height="300px">
         <div class="text-center">{{game.name}}</div>
       </ng-template>
     </owl-carousel-o>
