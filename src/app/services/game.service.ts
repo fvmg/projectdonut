@@ -23,4 +23,8 @@ export class GameService {
   saveGame(formData: FormData): Observable<any> {
     return this.http.post(this.baseUrl + '/createGame', formData);
   }
+
+  rateGame(rateData): Observable<any> {
+    return this.http.post(this.baseUrl + '/rateGame', rateData);
+  }
 }

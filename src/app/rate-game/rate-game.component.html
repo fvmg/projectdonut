@@ -1,16 +1,15 @@
 <div class="rate-form">
   <div class="card">
     <div class="card-body">
-      <h2 class="title">Rate Game</h2>
+      <h2 class="title">Rate Game {{game.name}}</h2>
       <form [formGroup]="rate">
         <div class="row row-space">
-          <div class="field col-sm-12">
-            <input type="text" formControlName="name" id="name" name="name">
-            <label for="name">Name</label>
+          <div class="col-sm-12">
+            <label>Rating</label><br>
+            <img *ngFor="let rate of rateArray;let i = index" alt="ratingDonut" [src]="getRateImage(rate)" (click)="changeRate(i)" height="60px" width="90px">
           </div>
         </div>
-
-
+        <br>
         <div class="row row-space">
           <div class="field col-sm-12">
             <textarea rows="6" type="text" formControlName="comments" id="comments" name="comments"></textarea>
@@ -18,7 +17,7 @@
           </div>
         </div>
 
-        <button class="default-button" (click)="rate()">Rate Game</button>
+        <button class="default-button" (click)="rateGame()">Rate Game</button>
       </form>
     </div>
   </div>

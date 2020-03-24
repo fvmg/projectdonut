@@ -1,11 +1,13 @@
-<mat-toolbar color="white">
-  <img src="../../assets/images/logo.png" height="110">
-  <div class="spacer"></div>
+<div class="header">
+  <mat-toolbar color="white">
+    <img src="../../assets/images/logo.png" height="110">
+    <div class="spacer"></div>
 
-  <a mat-button class="mat-button-bg">For You</a>
-  <a href="/games" mat-button class="mat-button-bg">Games</a>
-  <a mat-button class="mat-button-bg">Jobs</a>
-  <a mat-button class="mat-button-bg">News</a>
-  <a *ngIf="!logged" href="/login" mat-raised-button color="primary" class="mat-button-bg">Sign In</a>
-  <a *ngIf="logged" mat-raised-button color="primary" class="mat-button-bg"><i class="fa fa-user" aria-hidden="true"></i></a>
-</mat-toolbar>
+    <a mat-button class="mat-button-bg">For You</a>
+    <a href="/games" mat-button class="mat-button-bg">Games</a>
+    <a mat-button class="mat-button-bg">Jobs</a>
+    <a mat-button class="mat-button-bg">News</a>
+    <a *ngIf="!logged" href="/login" mat-raised-button color="primary" class="mat-button-bg">Sign In</a>
+    <a *ngIf="logged" mat-raised-button color="primary" class="mat-button-bg"><i class="fa fa-user" aria-hidden="true"></i></a>
+  </mat-toolbar>
+</div>

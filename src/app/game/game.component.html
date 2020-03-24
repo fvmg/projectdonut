@@ -8,10 +8,11 @@
       <span>Version {{game.version}}</span>
     </div>
     <div class="col-md-4">
-      <h1>Rating</h1>
-      <img *ngFor="let rate of ratingToArray()" alt="ratingDonut" src="../../assets/images/fullRating.png" height="60px" width="90px">
-      <img *ngIf="halfRating" alt="ratingDonut" src="../../assets/images/halfRating.png" height="60px" width="90px">
-      <button>Rate</button>
+      <h1>Rating ({{this.rating}}/5)</h1>
+
+      <img *ngFor="let rate of rateArray;let i = index" alt="ratingDonut" [src]="getRateImage(rate)" height="60px" width="90px">
+      <button (click)="rateGame()">Rate</button>
+      <h2>{{this.ratingNumber}} ratings</h2>
     </div>
   </div>
   <br>
@@ -32,7 +33,7 @@
     </div>
     <div class="col-md-3">
       <div class="game-counts">0</div>
-      <div class="game-texts">POSTS</div>
+      <div class="game-texts">COMMENTS</div>
     </div>
     <div class="col-md-3">
       <div class="game-counts">0</div>
