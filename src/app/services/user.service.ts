@@ -23,4 +23,8 @@ export class UserService {
   checkToken(tokenData): Observable<any> {
     return this.http.post(this.baseUrl + '/checkToken', tokenData);
   }
+
+  checkOwner(userId, gameId): Observable<any> {
+    return this.http.get(this.baseUrl + '/checkOwner?userId=' + userId + '&gameId=' + gameId);
+  }
 }

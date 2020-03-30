@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     this.checkLogin();
   }
 
-  checkLogin(){
+  checkLogin() {
     if (sessionStorage.getItem('login') && sessionStorage.getItem('token')) {
       const tokenData = {
         login: sessionStorage.getItem('login'),

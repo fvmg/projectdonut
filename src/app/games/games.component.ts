@@ -37,12 +37,16 @@ export class GamesComponent implements OnInit {
     nav: false
   }
 
+  logged = false;
   genres = [];
 
   constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
     this.reloadData();
+    if (sessionStorage.getItem('userId')) {
+      this.logged = true;
+    }
   }
 
   gameDetails(id: number){

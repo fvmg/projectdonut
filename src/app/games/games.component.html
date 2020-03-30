@@ -2,7 +2,7 @@
   <h1 style="text-align:center">
     GAMES
   </h1>
-  <a class="center" href="/createGame"><button class="default-button">Create Game</button></a>
+  <a class="center" *ngIf="logged" href="/createGame"><button class="default-button">Create Game</button></a>
   <div *ngFor="let genre of genres; let i = index">
     <div>{{genre.genre}}</div>
     <owl-carousel-o [options]="customOptions">

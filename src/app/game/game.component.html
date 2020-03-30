@@ -1,4 +1,6 @@
 <div class="card game-body">
+  <button *ngIf="ownerUser" mat-raised-button color="primary" class="mat-button-bg" (click)="editGame()" >Edit Game</button>
+  <br>
   <div class="row">
     <div class="col-md-8">
       <div class="row">

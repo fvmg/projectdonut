@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Game} from '../models/game';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GameService} from '../services/game.service';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-game',
@@ -9,6 +10,7 @@ import {GameService} from '../services/game.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  ownerUser = false;
   rating: number;
   ratingNumber: number;
   fullRates: number;
@@ -19,12 +21,15 @@ export class GameComponent implements OnInit {
     0, 0, 0, 0, 0
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router, private gameService: GameService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private gameService: GameService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.game = new Game();
 
     this.id = this.route.snapshot.params.id;
+    if (sessionStorage.getItem('userId')) {
+      this.checkOwner();
+    }
 
     this.gameService.getGame(this.id)
     .subscribe(data => {
@@ -36,6 +41,19 @@ export class GameComponent implements OnInit {
       this.calculateRate();
       console.log(this.game);
     });
+  }
+
+  checkOwner() {
+    this.userService.checkOwner(sessionStorage.getItem('userId'), this.id)
+    .subscribe(response => {
+        this.ownerUser = true;
+    }, (error) => {
+        this.ownerUser = false;
+    });
+  }
+
+  editGame() {
+    this.router.navigate(['/createGame', {gameId: this.id}]);
   }
 
   getRateImage(rate): string {

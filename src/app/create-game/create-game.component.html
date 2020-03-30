@@ -1,7 +1,8 @@
 <div class="game-form">
   <div class="card">
     <div class="card-body">
-      <h2 class="title">Create Game</h2>
+      <h2 *ngIf="!gameId" class="title">Create Game</h2>
+      <h2 *ngIf="gameId" class="title">Edit Game</h2>
       <form [formGroup]="game">
         <div class="row row-space">
           <div class="field col-sm-6">
