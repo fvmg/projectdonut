@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { RateGameComponent } from './rate-game/rate-game.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { JobsComponent } from './jobs/jobs.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { JobsComponent } from './jobs/jobs.component';
     AppRoutingModule,
     CarouselModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

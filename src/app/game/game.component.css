@@ -76,3 +76,8 @@ hr {
 .job-reqs {
   white-space: pre;
 }
+
+.modal-title {
+  font-size: 150%;
+  font-weight: bold;
+}

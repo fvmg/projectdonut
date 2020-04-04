@@ -27,4 +27,8 @@ export class JobService {
   saveJob(formData: FormData): Observable<any> {
     return this.http.post(this.baseUrl + '/createJob', formData);
   }
+
+  applyJob(formData: FormData): Observable<any> {
+    return this.http.post(this.baseUrl + '/applyJob', formData);
+  }
 }

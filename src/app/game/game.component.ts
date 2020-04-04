@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {GameService} from '../services/game.service';
 import {UserService} from '../services/user.service';
 import {JobService} from '../services/job.service';
+import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-game',
@@ -11,6 +12,8 @@ import {JobService} from '../services/job.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  resume: File;
+  coverLetter: File;
   logged = false;
   ownerUser = false;
   rating: number;
@@ -23,12 +26,19 @@ export class GameComponent implements OnInit {
     0, 0, 0, 0, 0
   ];
   selectedMenu = 'COMMENTS';
+  jobApplication;
 
   jobList;
   commentsList;
+  modalOptions: NgbModalOptions;
 
   constructor(private route: ActivatedRoute, private router: Router, private gameService: GameService, private userService: UserService,
-              private jobService: JobService) { }
+              private jobService: JobService, private modalService: NgbModal) {
+    this.modalOptions = {
+      backdrop: 'static',
+      backdropClass: 'customBackdrop'
+    };
+  }
 
   ngOnInit(): void {
     this.game = new Game();
@@ -141,6 +151,31 @@ export class GameComponent implements OnInit {
         comment.rateArray[i] = 0;
       }
     }
+  }
+
+  open(content, job) {
+    this.jobApplication = job;
+    this.modalService.open(content, this.modalOptions).result.then((result) => {});
+  }
+
+  onResumeChanged(event) {
+    this.resume = event.target.files[0];
+  }
+
+  onCoverLetterChanged(event) {
+    this.coverLetter = event.target.files[0];
+  }
+
+  applyJob() {
+    const formData = new FormData();
+    formData.append('resume', this.resume);
+    formData.append('coverLetter', this.coverLetter);
+    formData.append('jobId', this.jobApplication.id);
+    formData.append('userId', sessionStorage.getItem('userId'));
+
+    this.jobService.applyJob(formData).subscribe((response) => {
+      this.modalService.dismissAll();
+    });
   }
 
 }

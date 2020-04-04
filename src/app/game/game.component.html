@@ -58,7 +58,8 @@
             {{job.name}}
           </div>
           <div class="col-sm-1">
-            <button *ngIf="!ownerUser && logged">Apply</button>
+            <button *ngIf="!ownerUser && logged" (click)="open(applyModal, job)">Apply</button>
+            <button *ngIf="ownerUser" (click)="checkApplications(mymodal, job)">Apply</button>
           </div>
         </div>
         <div>
@@ -97,3 +98,62 @@
   </div>
 
 </div>
+
+
+<ng-template #applyModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Job Application</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2 class="card-title">
+      {{jobApplication.name}}
+    </h2>
+    <div class="row row-space">
+      <div class="field col-sm-12">
+        <input type="file" id="resume" (change)="onResumeChanged($event)">
+        <label for="resume">Resume</label>
+      </div>
+    </div>
+    <div class="row row-space">
+      <div class="field col-sm-12">
+        <input type="file" id="coverLetter" (change)="onCoverLetterChanged($event)">
+        <label for="coverLetter">Cover Letter</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="applyJob()">Apply</button>
+  </div>
+</ng-template>
+
+<ng-template #applicationsModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Job Applications</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2 class="card-title">
+      {{jobApplication.name}}
+    </h2>
+    <div class="row row-space">
+      <div class="field col-sm-12">
+        <input type="file" id="resume" (change)="onResumeChanged($event)">
+        <label for="resume">Resume</label>
+      </div>
+    </div>
+    <div class="row row-space">
+      <div class="field col-sm-12">
+        <input type="file" id="coverLetter" (change)="onCoverLetterChanged($event)">
+        <label for="coverLetter">Cover Letter</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="applyJob()">Apply</button>
+  </div>
+</ng-template>
