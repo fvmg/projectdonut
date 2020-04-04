@@ -1,0 +1,41 @@
+<div class="job-form">
+  <div class="card">
+    <div class="card-body">
+      <h2 *ngIf="!jobId" class="title">Create Job</h2>
+      <h2 *ngIf="jobId" class="title">Edit Job</h2>
+      <form [formGroup]="job">
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <input type="text" formControlName="name" id="name" name="name">
+            <label for="name">Name</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <textarea rows="6" type="text" formControlName="description" id="description" name="description"></textarea>
+            <label for="description">Description</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <textarea rows="6" type="text" formControlName="requirements" id="requirements" name="requirements"></textarea>
+            <label for="requirements">Requirements</label>
+          </div>
+        </div>
+
+        <div class="row row-space">
+          <div class="field col-sm-12">
+            <textarea rows="6" type="text" formControlName="benefits" id="benefits" name="benefits"></textarea>
+            <label for="benefits">Benefits</label>
+          </div>
+        </div>
+
+        <button class="default-button" (click)="save()">Save Job</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

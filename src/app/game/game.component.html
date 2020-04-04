@@ -1,5 +1,5 @@
 <div class="card game-body">
-  <button *ngIf="ownerUser" mat-raised-button color="primary" class="mat-button-bg" (click)="editGame()" >Edit Game</button>
+  <button *ngIf="ownerUser" mat-raised-button color="primary" class="mat-button-bg game-button" (click)="editGame()" >Edit Game</button>
   <br>
   <div class="row">
     <div class="col-md-8">
@@ -33,18 +33,62 @@
       <div class="game-counts">0</div>
       <div class="game-texts">FOLLOWERS</div>
     </div>
-    <div class="col-md-3">
-      <div class="game-counts">0</div>
+    <div (click)="changeMenu('COMMENTS')" class="col-md-3">
+      <div class="game-counts">{{commentsList.length}}</div>
       <div class="game-texts">COMMENTS</div>
     </div>
-    <div class="col-md-3">
+    <div (click)="changeMenu('GALLERY')" class="col-md-3">
       <div class="game-counts">0</div>
-      <div class="game-texts">IMAGES</div>
+      <div class="game-texts">GALLERY</div>
     </div>
-    <div class="col-md-3">
-      <div class="game-counts">0</div>
-      <div class="game-texts">VIDEOS</div>
+    <div (click)="changeMenu('JOBS')" class="col-md-3">
+      <div class="game-counts">{{jobList.length}}</div>
+      <div class="game-texts">JOBS</div>
     </div>
+  </div>
+  <div>
+    <div class="game-menu">
+      {{selectedMenu}}
+    </div>
+    <div *ngIf="selectedMenu == 'JOBS'">
+      <button *ngIf="ownerUser" mat-raised-button color="primary" class="mat-button-bg job-button" (click)="postJob()" >Post Job</button>
+      <div *ngFor="let job of jobList">
+        <div class="job-name">
+          {{job.name}}
+        </div>
+        <div>
+          {{job.description}}
+        </div>
+        <br>
+        <div>
+          REQUIREMENTS
+        </div>
+        <div class="job-reqs">
+          {{job.requirements}}
+        </div>
+        <div>
+          BENEFITS
+        </div>
+        <div class="job-reqs">
+          {{job.benefits}}
+        </div>
+        <hr/>
+      </div>
+    </div>
+
+    <div *ngIf="selectedMenu == 'COMMENTS'">
+      <div *ngFor="let comment of commentsList">
+        <div>
+          <img class="rate-img" *ngFor="let rate of comment.rateArray;let i = index" alt="ratingDonut" [src]="getRateImageComment(rate)" height="50px" width="70px">
+        </div>
+        <br>
+        <div>
+          {{comment.comments}}
+        </div>
+        <hr/>
+      </div>
+    </div>
+
   </div>
 
 </div>

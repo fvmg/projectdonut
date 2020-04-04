@@ -16,6 +16,10 @@ export class GameService {
     return this.http.get(this.baseUrl + '/getAll');
   }
 
+  getComments(gameId) {
+    return this.http.get(this.baseUrl + '/getComments?gameId=' + gameId);
+  }
+
   getGame(id: number): Observable<any> {
     return this.http.get(this.baseUrl + '/get?id=' + id);
   }

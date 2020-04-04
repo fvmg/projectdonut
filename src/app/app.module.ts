@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RateGameComponent } from './rate-game/rate-game.component';
+import { CreateJobComponent } from './create-job/create-job.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RateGameComponent } from './rate-game/rate-game.component';
     GameComponent,
     LoginComponent,
     RegisterComponent,
-    RateGameComponent
+    RateGameComponent,
+    CreateJobComponent
   ],
   imports: [
     BrowserModule,

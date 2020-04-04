@@ -1,0 +1,76 @@
+.job-form {
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  box-shadow: 10px 10px 10px;
+  margin-top: 130px;
+}
+
+body {
+  font-family: Avenir Next, Avenir, SegoeUI, sans-serif;
+}
+
+
+form {
+  margin: 2em 0;
+}
+/**
+* Make the field a flex-container, reverse the order so label is on top.
+*/
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+  margin-bottom: 1em;
+}
+/**
+* Add a transition to the label and input.
+* I'm not even sure that touch-action: manipulation works on
+* inputs, but hey, it's new and cool and could remove the
+* pesky delay.
+*/
+label, input, select {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+input, select{
+  font-size: 1.5em;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  font-family: inherit;
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 0;
+  cursor: text;
+}
+
+input:focus {
+  outline: 0;
+  border-bottom: 1px solid #666;
+}
+
+label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.default-button {
+  margin-top: 20px;
+  font-size: 120%;
+}
+
+h2 {
+  font-size: 180%;
+}
+
+input[type="file"] {
+  font-size: 110%;
+}
+
+textarea {
+  resize: none;
+}

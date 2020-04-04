@@ -16,6 +16,10 @@ img {
   padding-right: 15px;
 }
 
+.rate-img {
+  padding-right: 5px;
+}
+
 button {
   margin-left: 20px;
 }
@@ -35,4 +39,40 @@ button {
   width: 100%;
   text-align: center;
   font-size: 200%;
+}
+
+.game-menu {
+  font-size: 250%;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.game-button {
+  margin:0px auto;
+  display:block;
+}
+
+.job-button {
+  margin:30px auto;
+  display:block;
+}
+
+.job-name {
+  font-weight: bold;
+  font-size: 150%;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.job-reqs {
+  white-space: pre;
 }
