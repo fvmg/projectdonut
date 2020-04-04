@@ -47,14 +47,19 @@
     </div>
   </div>
   <div>
-    <div class="game-menu">
+    <div id="gameMenu" class="game-menu">
       {{selectedMenu}}
     </div>
     <div *ngIf="selectedMenu == 'JOBS'">
       <button *ngIf="ownerUser" mat-raised-button color="primary" class="mat-button-bg job-button" (click)="postJob()" >Post Job</button>
-      <div *ngFor="let job of jobList">
-        <div class="job-name">
-          {{job.name}}
+      <div  *ngFor="let job of jobList">
+        <div class="row">
+          <div class="col-sm-11 job-name">
+            {{job.name}}
+          </div>
+          <div class="col-sm-1">
+            <button *ngIf="!ownerUser && logged">Apply</button>
+          </div>
         </div>
         <div>
           {{job.description}}

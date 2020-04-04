@@ -11,6 +11,7 @@ import {JobService} from '../services/job.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  logged = false;
   ownerUser = false;
   rating: number;
   ratingNumber: number;
@@ -34,7 +35,14 @@ export class GameComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
     if (sessionStorage.getItem('userId')) {
+      this.logged = true;
       this.checkOwner();
+    }
+
+    const job = this.route.snapshot.paramMap.get('job');
+    if (job) {
+      this.selectedMenu = 'JOBS';
+      document.getElementById('gameMenu').scrollIntoView();
     }
 
     this.gameService.getGame(this.id)

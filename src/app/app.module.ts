@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RateGameComponent } from './rate-game/rate-game.component';
 import { CreateJobComponent } from './create-job/create-job.component';
+import { JobsComponent } from './jobs/jobs.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CreateJobComponent } from './create-job/create-job.component';
     LoginComponent,
     RegisterComponent,
     RateGameComponent,
-    CreateJobComponent
+    CreateJobComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,

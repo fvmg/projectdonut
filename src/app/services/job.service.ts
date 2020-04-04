@@ -16,6 +16,10 @@ export class JobService {
     return this.http.get(this.baseUrl + '/getAll?gameId=' + gameId);
   }
 
+  getAllJobs() {
+    return this.http.get(this.baseUrl + '/getAllList');
+  }
+
   getJob(id: number): Observable<any> {
     return this.http.get(this.baseUrl + '/get?id=' + id);
   }

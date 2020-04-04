@@ -7,6 +7,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {RateGameComponent} from './rate-game/rate-game.component';
 import {CreateJobComponent} from './create-job/create-job.component';
+import {JobsComponent} from './jobs/jobs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'games', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'game/:id', component: GameComponent },
   { path: 'rateGame/:id', component: RateGameComponent },
   { path: 'createJob', component: CreateJobComponent },
+  { path: 'jobs', component: JobsComponent }
 ];
 
 @NgModule({
