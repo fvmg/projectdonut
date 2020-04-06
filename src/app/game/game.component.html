@@ -4,8 +4,10 @@
   <div class="row">
     <div class="col-md-8">
       <div class="row">
-        <h1>{{game.name}}</h1>
-        <button>Download</button>
+        <h1>{{game.name}}
+          <button *ngIf="logged && !follower" (click)="followGame(true)" mat-raised-button color="primary" class="mat-button-bg like-button"><i class="fa fa-thumbs-up"></i></button>
+          <button style="cursor: pointer;" *ngIf="logged && follower" (click)="followGame(false)" mat-raised-button color="primary" class="mat-button-bg like-button"><i class="fa fa-thumbs-down"></i></button>
+        </h1>
       </div>
       <span>Version {{game.version}}</span>
     </div>
@@ -30,7 +32,7 @@
   <br>
   <div class="row">
     <div class="col-md-3">
-      <div class="game-counts">0</div>
+      <div class="game-counts">{{followersCount}}</div>
       <div class="game-texts">FOLLOWERS</div>
     </div>
     <div (click)="changeMenu('COMMENTS')" class="col-md-3">
@@ -38,7 +40,7 @@
       <div class="game-texts">COMMENTS</div>
     </div>
     <div (click)="changeMenu('GALLERY')" class="col-md-3">
-      <div class="game-counts">0</div>
+      <div class="game-counts">{{images.length}}</div>
       <div class="game-texts">GALLERY</div>
     </div>
     <div (click)="changeMenu('JOBS')" class="col-md-3">
@@ -59,7 +61,7 @@
           </div>
           <div class="col-sm-1">
             <button *ngIf="!ownerUser && logged" (click)="open(applyModal, job)">Apply</button>
-            <button *ngIf="ownerUser" (click)="checkApplications(mymodal, job)">Apply</button>
+            <button *ngIf="ownerUser" (click)="open(applicationsModal, job)">Check Applications</button>
           </div>
         </div>
         <div>
@@ -92,6 +94,15 @@
           {{comment.comments}}
         </div>
         <hr/>
+      </div>
+    </div>
+
+    <div *ngIf="selectedMenu == 'GALLERY'">
+      <button *ngIf="ownerUser" mat-raised-button color="primary" class="mat-button-bg job-button" (click)="open(imageModal, null)" >Add Image</button>
+      <div class="row">
+        <div *ngFor="let image of images" class="card image-card">
+          <img  alt="jobImg" class="card-img-top" [src]="image.image" height="400px">
+        </div>
       </div>
     </div>
 
@@ -140,20 +151,36 @@
     <h2 class="card-title">
       {{jobApplication.name}}
     </h2>
-    <div class="row row-space">
-      <div class="field col-sm-12">
-        <input type="file" id="resume" (change)="onResumeChanged($event)">
-        <label for="resume">Resume</label>
-      </div>
+    <div *ngFor="let application of applications">
+      <hr/>
+      <p class="application-name">{{application.name}}</p>
+      <p>{{application.email}}</p>
+      <p class="application-link" (click)="downloadItem(application.resume)">Resume</p>
+      <p *ngIf="application.coverLetter" class="application-link" (click)="downloadItem(application.coverLetter)" >Cover Letter</p>
+      <hr/>
     </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Ok</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #imageModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Add Image</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
     <div class="row row-space">
       <div class="field col-sm-12">
-        <input type="file" id="coverLetter" (change)="onCoverLetterChanged($event)">
-        <label for="coverLetter">Cover Letter</label>
+        <input type="file" id="image" (change)="onImageChanged($event)">
+        <label for="image">Image</label>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="applyJob()">Apply</button>
+    <button type="button" class="btn btn-outline-dark" (click)="addImage()">Save</button>
   </div>
 </ng-template>

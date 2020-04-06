@@ -27,4 +27,8 @@ export class UserService {
   checkOwner(userId, gameId): Observable<any> {
     return this.http.get(this.baseUrl + '/checkOwner?userId=' + userId + '&gameId=' + gameId);
   }
+
+  checkFollower(userId, gameId): Observable<any> {
+    return this.http.get(this.baseUrl + '/checkFollower?userId=' + userId + '&gameId=' + gameId);
+  }
 }

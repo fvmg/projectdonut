@@ -28,6 +28,20 @@ button {
   font-size: 130%;
 }
 
+i {
+  color: white;
+}
+
+.like-button {
+  width: 50px;
+  cursor: pointer;
+}
+
+.image-card {
+  width: 800px;
+  margin: 30px auto 30px auto;
+}
+
 .game-counts {
   width: 100%;
   text-align: center;
@@ -71,6 +85,24 @@ hr {
   border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0;
+}
+
+.application-name {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.application-link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.application-link:visited {
+  color: green;
+}
+
+.application-link:hover {
+  color: lightblue;
 }
 
 .job-reqs {

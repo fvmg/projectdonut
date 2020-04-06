@@ -20,6 +20,14 @@ export class GameService {
     return this.http.get(this.baseUrl + '/getComments?gameId=' + gameId);
   }
 
+  getImages(gameId) {
+    return this.http.get(this.baseUrl + '/getImages?gameId=' + gameId);
+  }
+
+  getFollowers(gameId) {
+    return this.http.get(this.baseUrl + '/getFollowers?gameId=' + gameId);
+  }
+
   getGame(id: number): Observable<any> {
     return this.http.get(this.baseUrl + '/get?id=' + id);
   }
@@ -28,7 +36,15 @@ export class GameService {
     return this.http.post(this.baseUrl + '/createGame', formData);
   }
 
+  addImage(formData: FormData): Observable<any> {
+    return this.http.post(this.baseUrl + '/addImage', formData);
+  }
+
   rateGame(rateData): Observable<any> {
     return this.http.post(this.baseUrl + '/rateGame', rateData);
+  }
+
+  followGame(followData): Observable<any> {
+    return this.http.post(this.baseUrl + '/followGame', followData);
   }
 }

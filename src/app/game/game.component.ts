@@ -12,10 +12,13 @@ import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  followersCount = 0;
   resume: File;
   coverLetter: File;
+  image: File;
   logged = false;
   ownerUser = false;
+  follower = false;
   rating: number;
   ratingNumber: number;
   fullRates: number;
@@ -32,6 +35,9 @@ export class GameComponent implements OnInit {
   commentsList;
   modalOptions: NgbModalOptions;
 
+  applications = [];
+  images = [];
+
   constructor(private route: ActivatedRoute, private router: Router, private gameService: GameService, private userService: UserService,
               private jobService: JobService, private modalService: NgbModal) {
     this.modalOptions = {
@@ -44,9 +50,12 @@ export class GameComponent implements OnInit {
     this.game = new Game();
 
     this.id = this.route.snapshot.params.id;
+    this.getFollowers();
+    this.getImages();
     if (sessionStorage.getItem('userId')) {
       this.logged = true;
       this.checkOwner();
+      this.checkFollower();
     }
 
     const job = this.route.snapshot.paramMap.get('job');
@@ -82,8 +91,45 @@ export class GameComponent implements OnInit {
     });
   }
 
+  followGame(action) {
+    const formData = new FormData();
+    formData.append('gameId', this.id.toString());
+    formData.append('userId', sessionStorage.getItem('userId'));
+    formData.append('action', action);
+    this.gameService.followGame(formData).subscribe((response) => {
+      this.getFollowers();
+      this.checkFollower();
+    });
+  }
+
+  getFollowers() {
+    this.gameService.getFollowers(this.id).subscribe((response: number) => {
+      this.followersCount = response;
+    });
+  }
+
+  checkFollower() {
+    this.userService.checkFollower(sessionStorage.getItem('userId'), this.id)
+    .subscribe(response => {
+      this.follower = true;
+    }, (error) => {
+      this.follower = false;
+    });
+  }
+
   postJob() {
     this.router.navigate(['/createJob', {gameId: this.id}]);
+  }
+
+  addImage() {
+    const formData = new FormData();
+    formData.append('image', this.image);
+    formData.append('gameId', this.id.toString());
+
+    this.gameService.addImage(formData).subscribe((response) => {
+      this.getImages();
+      this.modalService.dismissAll();
+    });
   }
 
   getJobs() {
@@ -100,6 +146,17 @@ export class GameComponent implements OnInit {
           0, 0, 0, 0, 0
         ];
         this.calculateCommentRate(comment);
+      });
+    });
+  }
+
+  getImages() {
+    this.gameService.getImages(this.id).subscribe((data: any[]) => {
+      this.images = [];
+      data.forEach((image) => {
+        const base64Data = image.image;
+        image.image = 'data:image/jpeg;base64,' + base64Data;
+        this.images.push(image);
       });
     });
   }
@@ -154,12 +211,21 @@ export class GameComponent implements OnInit {
   }
 
   open(content, job) {
-    this.jobApplication = job;
+    if (job) {
+      this.jobApplication = job;
+      this.jobService.getApplications(job.id).subscribe((data) => {
+        this.applications = data;
+      });
+    }
     this.modalService.open(content, this.modalOptions).result.then((result) => {});
   }
 
   onResumeChanged(event) {
     this.resume = event.target.files[0];
+  }
+
+  onImageChanged(event) {
+    this.image = event.target.files[0];
   }
 
   onCoverLetterChanged(event) {
@@ -176,6 +242,12 @@ export class GameComponent implements OnInit {
     this.jobService.applyJob(formData).subscribe((response) => {
       this.modalService.dismissAll();
     });
+  }
+
+  downloadItem(download) {
+    const file = new Blob([download], {type: 'application/pdf'});
+    const fileURL = URL.createObjectURL(file);
+    window.open(fileURL);
   }
 
 }
