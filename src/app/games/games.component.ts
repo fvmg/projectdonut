@@ -55,14 +55,12 @@ export class GamesComponent implements OnInit {
 
   reloadData() {
     this.gameService.getGameList().subscribe((data: any[]) => {
-      console.log('BEFORE', data);
       data.forEach((genre) => {
         genre.games.forEach((game) => {
           const base64Data = game.coverImage;
           game.coverImage = 'data:image/jpeg;base64,' + base64Data;
         });
       });
-      console.log('AFTER', data);
       this.genres = data;
     });
   }

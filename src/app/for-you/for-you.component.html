@@ -1,0 +1,24 @@
+<div class="scroll-list">
+  <h1 style="text-align:center">
+    FOR YOU
+  </h1>
+  <div class="row">
+    <div (click)="openGame(game.id)" *ngFor="let game of games" class="card job-card">
+      <img  alt="jobImg" class="card-img-top" [src]="game.coverImage" height="300px">
+      <div class="card-body">
+        <p *ngIf="game.genre" class="card-footer">{{game.genre}}</p>
+        <p class="card-title">{{game.name}}</p>
+        <p class="card-text">{{game.description}}</p>
+      </div>
+    </div>
+    <div (click)="openJob(job.gameId)" *ngFor="let job of jobs" class="card job-card">
+      <img  alt="jobImg" class="card-img-top" [src]="job.coverImage" height="300px">
+      <div class="card-body">
+        <p class="card-footer">{{job.gameName}}</p>
+        <p class="card-title">{{job.name}}</p>
+        <p class="card-text">{{job.description}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -9,6 +9,11 @@
   margin-top: 130px;
 }
 
+.game-button {
+  margin:0px auto;
+  display:block;
+}
+
 body {
   font-family: Avenir Next, Avenir, SegoeUI, sans-serif;
 }

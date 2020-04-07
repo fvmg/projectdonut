@@ -20,6 +20,7 @@ import { RateGameComponent } from './rate-game/rate-game.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { JobsComponent } from './jobs/jobs.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ForYouComponent } from './for-you/for-you.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     RateGameComponent,
     CreateJobComponent,
-    JobsComponent
+    JobsComponent,
+    ForYouComponent
   ],
   imports: [
     BrowserModule,

@@ -20,8 +20,16 @@ export class UserService {
     return this.http.post(this.baseUrl + '/register', formData);
   }
 
+  updateUser(formData: FormData): Observable<any> {
+    return this.http.post(this.baseUrl + '/updateUser', formData);
+  }
+
   checkToken(tokenData): Observable<any> {
     return this.http.post(this.baseUrl + '/checkToken', tokenData);
+  }
+
+  getUser(userId): Observable<any> {
+    return this.http.get(this.baseUrl + '/getUser?userId=' + userId);
   }
 
   checkOwner(userId, gameId): Observable<any> {

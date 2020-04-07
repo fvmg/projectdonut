@@ -3,10 +3,10 @@
     <a href="/games"><img src="../../assets/images/logo.png" height="110"></a>
     <div class="spacer"></div>
 
-    <a *ngIf="logged" mat-button class="mat-button-bg">For You</a>
+    <a *ngIf="logged" href="/forYou" mat-button class="mat-button-bg">For You</a>
     <a href="/games" mat-button class="mat-button-bg">Games</a>
     <a href="/jobs" mat-button class="mat-button-bg">Jobs</a>
     <a *ngIf="!logged" href="/login" mat-raised-button color="primary" class="mat-button-bg">Sign In</a>
-    <a *ngIf="logged" mat-raised-button color="primary" class="mat-button-bg"><i class="fa fa-user" aria-hidden="true"></i></a>
+    <a *ngIf="logged" href="/register" mat-raised-button color="primary" class="mat-button-bg"><i class="fa fa-user" aria-hidden="true"></i></a>
   </mat-toolbar>
 </div>

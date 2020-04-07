@@ -1,0 +1,27 @@
+.scroll-list {
+  background: white;
+  position: absolute;
+  top: 23%;
+  width: 100%;
+}
+
+.job-card {
+  width: 500px;
+  margin: 30px auto 30px auto;
+  cursor: pointer;
+}
+
+.row {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row > div[class*='col-'] {
+  display: flex;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 120%;
+}

@@ -47,4 +47,8 @@ export class GameService {
   followGame(followData): Observable<any> {
     return this.http.post(this.baseUrl + '/followGame', followData);
   }
+
+  getForYouGames(userId) {
+    return this.http.get(this.baseUrl + '/getForYouGames?userId=' + userId);
+  }
 }

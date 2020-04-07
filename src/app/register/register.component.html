@@ -1,7 +1,9 @@
 <div class="register-form">
   <div class="card">
     <div class="card-body">
-      <h2 class="title">Register</h2>
+      <button *ngIf="logged" mat-raised-button color="primary" class="mat-button-bg game-button" (click)="logout()" >Logout</button>
+      <h2 *ngIf="!logged" class="title">Register</h2>
+      <h2 *ngIf="logged" class="title">Update Profile</h2>
       <form [formGroup]="registerForm">
         <div class="row row-space">
           <div class="field col-sm-6">
@@ -21,21 +23,21 @@
           </div>
         </div>
 
-        <div class="row row-space">
+        <div *ngIf="!logged" class="row row-space">
           <div class="field col-sm-12">
             <input type="text" formControlName="login" id="login" name="login">
             <label for="login">Login</label>
           </div>
         </div>
 
-        <div class="row row-space">
+        <div *ngIf="!logged" class="row row-space">
           <div class="field col-sm-12">
             <input type="password" formControlName="password" id="password" name="password">
             <label for="password">Password</label>
           </div>
         </div>
 
-        <div class="row row-space">
+        <div *ngIf="!logged" class="row row-space">
           <div class="field col-sm-12">
             <input type="password" formControlName="passwordRepeat" id="passwordRepeat" name="passwordRepeat">
             <label for="passwordRepeat">Repeat Password</label>
@@ -48,10 +50,11 @@
           </div>
         </div>
 
-        <button class="default-button" (click)="register()">Register</button>
+        <button *ngIf="!logged" class="default-button" (click)="register()">Register</button>
+        <button *ngIf="logged" class="default-button" (click)="register()">Update</button>
 
       </form>
-      <a href="login">Have an account? Sign In</a>
+      <a *ngIf="!logged" href="login">Have an account? Sign In</a>
     </div>
   </div>
 </div>

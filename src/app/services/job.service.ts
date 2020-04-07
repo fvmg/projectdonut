@@ -20,6 +20,10 @@ export class JobService {
     return this.http.get(this.baseUrl + '/getAllList');
   }
 
+  getForYouJobs(userId) {
+    return this.http.get(this.baseUrl + '/getForYouJobs?userId=' + userId);
+  }
+
   getApplications(id: number): Observable<any> {
     return this.http.get(this.baseUrl + '/getApplications?id=' + id);
   }
